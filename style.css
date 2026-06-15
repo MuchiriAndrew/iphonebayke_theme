@@ -1,0 +1,20 @@
+/*
+Theme Name: IphoneBayKE
+Theme URI: https://iphonebay.co.ke
+Author: Belva Digital
+Author URI: https://belvadigital.com
+Description: Premium custom WooCommerce theme for IphoneBayKE — a Kenyan smartphone marketplace. Product-first, mobile-first, built for Ex-UK / Brand New / Refurbished iPhones, Samsung & more. Editable hero, menus, and content with no paid plugins required.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: iphonebay
+Tags: e-commerce, custom-colors, custom-logo, custom-menu, featured-images, full-width-template, theme-options, translation-ready
+WC requires at least: 7.0
+WC tested up to: 9.0
+*/
+
+/* All theme styles are enqueued from assets/css/theme.css (see functions.php).
+   This file only carries the theme header required by WordPress. */
