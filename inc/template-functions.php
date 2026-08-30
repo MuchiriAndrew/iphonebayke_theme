@@ -174,6 +174,12 @@ function iphonebay_product_category_url( $slug ) {
  * @return string
  */
 function iphonebay_how_we_test_url() {
+	$page = get_page_by_path( 'how-we-test' );
+
+	if ( $page instanceof WP_Post ) {
+		return get_permalink( $page );
+	}
+
 	$post = get_page_by_path( 'how-we-test-battery-life', OBJECT, 'post' );
 
 	if ( $post instanceof WP_Post ) {

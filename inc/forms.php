@@ -185,7 +185,7 @@ function iphonebay_newsletter_form() {
 	?>
 	<div class="footer-newsletter">
 		<div class="footer-col-head"><?php esc_html_e( 'Newsletter', 'iphonebay' ); ?></div>
-		<p class="footer-newsletter-copy"><?php esc_html_e( 'Get fresh drops, weekly deals, and stock alerts in your inbox.', 'iphonebay' ); ?></p>
+		<p class="footer-newsletter-copy"><?php esc_html_e( 'Stock alerts and price drops — one short email when a good batch lands, nothing else. No spam.', 'iphonebay' ); ?></p>
 		<?php echo $notice; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<form class="footer-newsletter-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 			<input type="hidden" name="action" value="iphonebay_newsletter_form">

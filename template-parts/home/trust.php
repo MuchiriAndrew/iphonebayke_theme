@@ -18,7 +18,7 @@ $items = array(
 	array(
 		'icon' => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>',
 		'name' => __( '6-Month Warranty', 'iphonebay' ),
-		'desc' => __( 'Every device is covered for six months. Hardware faults are repaired, replaced or refunded — your choice.', 'iphonebay' ),
+		'desc' => __( 'Six months on Ex-UK devices, twelve on sealed new. Hardware faults are repaired, replaced or refunded.', 'iphonebay' ),
 	),
 	array(
 		'icon' => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>',

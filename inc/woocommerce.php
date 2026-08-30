@@ -214,7 +214,7 @@ add_action( 'woocommerce_single_product_summary', 'iphonebay_single_trust', 35 )
 function iphonebay_single_trust() {
 	$items = array(
 		array( '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>', __( 'Genuine Device', 'iphonebay' ), __( 'IMEI verified, not a clone', 'iphonebay' ) ),
-		array( '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>', __( '6-Month Warranty', 'iphonebay' ), __( 'Hardware faults covered', 'iphonebay' ) ),
+		array( '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>', __( 'Written Warranty', 'iphonebay' ), __( '6 mo Ex-UK · 12 mo new', 'iphonebay' ) ),
 		array( '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>', __( 'M-Pesa Accepted', 'iphonebay' ), __( 'Instant confirmation', 'iphonebay' ) ),
 		array( '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="m16 8 5 2v6h-5V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>', __( 'Same-Day Delivery', 'iphonebay' ), __( 'Nairobi CBD & estates', 'iphonebay' ) ),
 	);
