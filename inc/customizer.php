@@ -53,15 +53,11 @@ function iphonebay_customize_register( $wp_customize ) {
 	$add_text( 'phone', __( 'Phone number', 'iphonebay' ), 'iphonebay_header', '+254 700 000 000' );
 	$add_text( 'whatsapp', __( 'WhatsApp number (digits only, e.g. 254700000000)', 'iphonebay' ), 'iphonebay_header', '254700000000' );
 
-	/* ============ MARQUEE ============ */
-	$wp_customize->add_section( 'iphonebay_marquee', array( 'title' => __( 'Marquee Bar', 'iphonebay' ), 'panel' => 'iphonebay_panel' ) );
-	$add_text( 'marquee', __( 'Marquee items (separate with | )', 'iphonebay' ), 'iphonebay_marquee', 'Apple | Samsung | Google Pixel | M-Pesa Accepted | Genuine Devices | Nairobi Delivery | 6-Month Warranty | Battery Verified', 'textarea' );
-
 	/* ============ TRADE-IN ============ */
 	$wp_customize->add_section( 'iphonebay_tradein', array( 'title' => __( 'Trade-In Section', 'iphonebay' ), 'panel' => 'iphonebay_panel' ) );
-	$add_text( 'tradein_eyebrow', __( 'Eyebrow', 'iphonebay' ), 'iphonebay_tradein', 'Trade-In Program' );
-	$add_text( 'tradein_title', __( 'Title (wrap a word in *asterisks* for gold)', 'iphonebay' ), 'iphonebay_tradein', 'Your Old Phone is *Worth More*' );
-	$add_text( 'tradein_desc', __( 'Description', 'iphonebay' ), 'iphonebay_tradein', "Don't let your old device collect dust. Trade it in and get instant credit towards your next purchase — or cash via M-Pesa. Quick valuation, honest prices.", 'textarea' );
+	$add_text( 'tradein_eyebrow', __( 'Eyebrow', 'iphonebay' ), 'iphonebay_tradein', 'Trade-In' );
+	$add_text( 'tradein_title', __( 'Title (wrap a word in *asterisks* for gold)', 'iphonebay' ), 'iphonebay_tradein', 'Your old phone is *worth more* than a drawer' );
+	$add_text( 'tradein_desc', __( 'Description', 'iphonebay' ), 'iphonebay_tradein', 'Trade in the phone sitting in your drawer and put the value towards your next one. Example: an iPhone 12 64GB in good condition currently fetches up to KES 27,000 — paid to your M-Pesa the same day we verify it.', 'textarea' );
 	$add_text( 'tradein_step1', __( 'Step 1', 'iphonebay' ), 'iphonebay_tradein', 'Tell us your phone model & condition' );
 	$add_text( 'tradein_step2', __( 'Step 2', 'iphonebay' ), 'iphonebay_tradein', 'Get an instant quote — no obligation' );
 	$add_text( 'tradein_step3', __( 'Step 3', 'iphonebay' ), 'iphonebay_tradein', 'Drop off or courier, get paid via M-Pesa' );
@@ -78,8 +74,6 @@ function iphonebay_customize_register( $wp_customize ) {
 	/* ============ SECTION TITLES ============ */
 	$wp_customize->add_section( 'iphonebay_sections', array( 'title' => __( 'Homepage Product Rows', 'iphonebay' ), 'panel' => 'iphonebay_panel' ) );
 	$add_text( 'best_title', __( 'Best Sellers — title', 'iphonebay' ), 'iphonebay_sections', 'Best *Sellers*' );
-	$add_text( 'new_title', __( 'New Arrivals — title', 'iphonebay' ), 'iphonebay_sections', 'New *Arrivals*' );
-	$add_text( 'deals_title', __( 'Deals & Offers — title', 'iphonebay' ), 'iphonebay_sections', 'Deals & *Offers*' );
 
 	/* ============ FOOTER / SOCIAL ============ */
 	$wp_customize->add_section( 'iphonebay_footer', array( 'title' => __( 'Footer & Social', 'iphonebay' ), 'panel' => 'iphonebay_panel' ) );

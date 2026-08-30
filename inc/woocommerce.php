@@ -136,6 +136,54 @@ add_filter( 'woocommerce_sale_flash', function ( $html, $post, $product ) {
 	return '<span class="onsale">' . esc_html__( 'Sale', 'iphonebay' ) . '</span>';
 }, 10, 3 );
 
+/* Variable products: "From KSh X" instead of the full price range. */
+add_filter( 'woocommerce_variable_price_html', function ( $price_html, $product ) {
+	$prices = $product->get_variation_prices( true );
+	if ( empty( $prices['price'] ) ) {
+		return $price_html;
+	}
+	$min = min( $prices['price'] );
+	$max = max( $prices['price'] );
+	if ( $min === $max ) {
+		return wc_price( $min );
+	}
+	return '<span class="price-from-label">' . esc_html__( 'From', 'iphonebay' ) . '</span> ' . wc_price( $min );
+}, 10, 2 );
+
+/* M-Pesa: mark the gateway label so checkout can render it prominently. */
+add_filter( 'woocommerce_gateway_icon', function ( $icon, $gateway_id ) {
+	$gateways = function_exists( 'WC' ) && WC()->payment_gateways() ? WC()->payment_gateways()->payment_gateways() : array();
+	if ( isset( $gateways[ $gateway_id ] ) && false !== stripos( (string) $gateways[ $gateway_id ]->title, 'm-pesa' ) ) {
+		$icon .= '<span class="mpesa-cta-badge">' . esc_html__( 'Most popular', 'iphonebay' ) . '</span>';
+	}
+	return $icon;
+}, 10, 2 );
+
+/* Friendly empty-cart copy. */
+add_filter( 'wc_empty_cart_message', function () {
+	return esc_html__( 'Your cart is empty — for now. Browse our Ex-UK iPhones and find your next phone.', 'iphonebay' );
+} );
+
+/* Trust reassurance directly above the Place Order button. */
+add_action( 'woocommerce_review_order_before_submit', function () {
+	?>
+	<div class="checkout-reassure" role="note">
+		<div class="checkout-reassure-item">
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+			<span><?php esc_html_e( '30-point inspected before dispatch', 'iphonebay' ); ?></span>
+		</div>
+		<div class="checkout-reassure-item">
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+			<span><?php esc_html_e( '6-month warranty on every device', 'iphonebay' ); ?></span>
+		</div>
+		<div class="checkout-reassure-item">
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+			<span><?php esc_html_e( 'Pay securely — M-Pesa, bank or card', 'iphonebay' ); ?></span>
+		</div>
+	</div>
+	<?php
+} );
+
 /* Breadcrumb delimiter to match design. */
 add_filter( 'woocommerce_breadcrumb_defaults', function ( $defaults ) {
 	$defaults['delimiter']   = '<span class="breadcrumb-sep">/</span>';

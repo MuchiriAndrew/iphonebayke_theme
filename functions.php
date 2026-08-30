@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'IPHONEBAY_VERSION', '1.4.0' );
+define( 'IPHONEBAY_VERSION', '1.5.1' );
 define( 'IPHONEBAY_DIR', get_template_directory() );
 define( 'IPHONEBAY_URI', get_template_directory_uri() );
 

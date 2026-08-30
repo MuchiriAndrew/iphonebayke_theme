@@ -22,9 +22,9 @@ $steps     = array(
 <div class="tradein" id="tradein">
 	<div class="tradein-inner">
 		<div class="tradein-content">
-			<div class="tradein-eyebrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg> <?php echo esc_html( iphonebay_opt( 'tradein_eyebrow', 'Trade-In Program' ) ); ?></div>
-			<h2 class="tradein-title"><?php echo wp_kses_post( iphonebay_highlight( iphonebay_opt( 'tradein_title', 'Your Old Phone is *Worth More*' ) ) ); ?></h2>
-			<p class="tradein-desc"><?php echo esc_html( iphonebay_opt( 'tradein_desc', "Don't let your old device collect dust. Trade it in and get instant credit towards your next purchase — or cash via M-Pesa." ) ); ?></p>
+			<div class="tradein-eyebrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg> <?php echo esc_html( iphonebay_opt( 'tradein_eyebrow', 'Trade-In' ) ); ?></div>
+			<h2 class="tradein-title"><?php echo wp_kses_post( iphonebay_highlight( iphonebay_opt( 'tradein_title', 'Your old phone is *worth more* than a drawer' ) ) ); ?></h2>
+			<p class="tradein-desc"><?php echo esc_html( iphonebay_opt( 'tradein_desc', 'Trade in the phone sitting in your drawer and put the value towards your next one. Example: an iPhone 12 64GB in good condition currently fetches up to KES 27,000 — paid to your M-Pesa the same day we verify it.' ) ); ?></p>
 			<div class="tradein-steps">
 				<?php foreach ( $steps as $i => $step ) : ?>
 					<div class="tradein-step"><div class="tradein-step-n"><?php echo esc_html( $i + 1 ); ?></div><div class="tradein-step-t"><?php echo esc_html( $step ); ?></div></div>

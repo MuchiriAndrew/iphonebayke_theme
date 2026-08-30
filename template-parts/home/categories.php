@@ -69,7 +69,6 @@ $shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 
 				<?php else : ?>
 					<img src="<?php echo esc_url( wc_placeholder_img_src( 'large' ) ); ?>" alt="<?php echo esc_attr( $cat->name ); ?>">
 				<?php endif; ?>
-				<div class="cat-overlay"></div>
 				<div class="cat-body">
 					<div class="cat-label"><?php echo esc_html( $config['label'] ); ?></div>
 					<div class="cat-name"><?php echo esc_html( $config['title'] ); ?></div>
