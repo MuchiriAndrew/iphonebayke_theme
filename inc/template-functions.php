@@ -174,19 +174,13 @@ function iphonebay_product_category_url( $slug ) {
  * @return string
  */
 function iphonebay_how_we_test_url() {
-	$page = get_page_by_path( 'how-we-test' );
+	$page = get_page_by_path( 'warranty-returns' );
 
 	if ( $page instanceof WP_Post ) {
 		return get_permalink( $page );
 	}
 
-	$post = get_page_by_path( 'how-we-test-battery-life', OBJECT, 'post' );
-
-	if ( $post instanceof WP_Post ) {
-		return get_permalink( $post );
-	}
-
-	return iphonebay_get_core_page_url( 'blog', home_url( '/blog/' ) );
+	return home_url( '/warranty-returns/' );
 }
 
 /**
@@ -264,7 +258,6 @@ function iphonebay_product_card( $product ) {
 	$permalink = get_permalink( $product->get_id() );
 	$cond      = iphonebay_product_condition( $product );
 	$meta      = iphonebay_product_meta_line( $product );
-	$cart_url  = $product->add_to_cart_url();
 	$img       = $product->get_image( 'iphonebay_card' );
 	?>
 	<article class="product-card">
@@ -280,9 +273,6 @@ function iphonebay_product_card( $product ) {
 			<div class="price-row"><?php echo wp_kses_post( $product->get_price_html() ); ?></div>
 			<div class="card-actions">
 				<a href="<?php echo esc_url( $permalink ); ?>" class="btn-view"><?php esc_html_e( 'View Details', 'iphonebay' ); ?></a>
-				<a href="<?php echo esc_url( $cart_url ); ?>" class="btn-cart-quick" aria-label="<?php esc_attr_e( 'Add to cart', 'iphonebay' ); ?>" <?php echo $product->is_type( 'simple' ) ? 'data-quantity="1" rel="nofollow"' : ''; ?>>
-					<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="23" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-				</a>
 			</div>
 		</div>
 	</article>

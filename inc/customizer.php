@@ -17,6 +17,17 @@ function iphonebay_opt( $key, $default = '' ) {
 }
 
 /**
+ * Add a body class for the selected font pairing so theme.css can swap
+ * --font-display / --font-body per-pairing without a page reload's worth
+ * of extra requests (all candidate fonts are already enqueued).
+ */
+add_filter( 'body_class', function ( $classes ) {
+	$pairing = iphonebay_opt( 'font_pairing', 'outfit' );
+	$classes[] = 'font-pair-' . sanitize_html_class( $pairing );
+	return $classes;
+} );
+
+/**
  * Register settings.
  */
 function iphonebay_customize_register( $wp_customize ) {
@@ -48,6 +59,35 @@ function iphonebay_customize_register( $wp_customize ) {
 		) ) );
 	};
 
+	$add_select = function ( $id, $label, $section, $choices, $default = '' ) use ( $wp_customize ) {
+		$wp_customize->add_setting( 'iphonebay_' . $id, array(
+			'default'           => $default,
+			'sanitize_callback' => 'sanitize_text_field',
+		) );
+		$wp_customize->add_control( 'iphonebay_' . $id, array(
+			'label'   => $label,
+			'section' => $section,
+			'type'    => 'select',
+			'choices' => $choices,
+		) );
+	};
+
+	/* ============ TYPOGRAPHY ============ */
+	$wp_customize->add_section( 'iphonebay_typography', array( 'title' => __( 'Typography', 'iphonebay' ), 'panel' => 'iphonebay_panel' ) );
+	$add_select(
+		'font_pairing',
+		__( 'Font pairing', 'iphonebay' ),
+		'iphonebay_typography',
+		array(
+			'outfit'     => __( 'Outfit / Outfit (current)', 'iphonebay' ),
+			'bricolage'  => __( 'Bricolage Grotesque / Inter', 'iphonebay' ),
+			'bigshoulders' => __( 'Big Shoulders Display / Outfit', 'iphonebay' ),
+			'spacegrotesk' => __( 'Space Grotesk / Outfit', 'iphonebay' ),
+			'fraunces'   => __( 'Fraunces / Inter', 'iphonebay' ),
+		),
+		'outfit'
+	);
+
 	/* ============ HEADER / CONTACT ============ */
 	$wp_customize->add_section( 'iphonebay_header', array( 'title' => __( 'Header & Contact', 'iphonebay' ), 'panel' => 'iphonebay_panel' ) );
 	$add_text( 'phone', __( 'Phone number', 'iphonebay' ), 'iphonebay_header', '+254 700 000 000' );
@@ -63,7 +103,9 @@ function iphonebay_customize_register( $wp_customize ) {
 	$add_text( 'tradein_step3', __( 'Step 3', 'iphonebay' ), 'iphonebay_tradein', 'Drop off or courier, get paid via M-Pesa' );
 	$add_text( 'tradein_btn_text', __( 'Button text', 'iphonebay' ), 'iphonebay_tradein', 'Get a Quote' );
 	$add_text( 'tradein_btn_url', __( 'Button URL', 'iphonebay' ), 'iphonebay_tradein', '#', 'url' );
-	$add_image( 'tradein_image', __( 'Image', 'iphonebay' ), 'iphonebay_tradein' );
+	$add_image( 'tradein_image', __( 'Image 1', 'iphonebay' ), 'iphonebay_tradein' );
+	$add_image( 'tradein_image2', __( 'Image 2 (optional, for slider)', 'iphonebay' ), 'iphonebay_tradein' );
+	$add_image( 'tradein_image3', __( 'Image 3 (optional, for slider)', 'iphonebay' ), 'iphonebay_tradein' );
 
 	/* ============ DELIVERY ============ */
 	$wp_customize->add_section( 'iphonebay_delivery', array( 'title' => __( 'Delivery & Payment', 'iphonebay' ), 'panel' => 'iphonebay_panel' ) );

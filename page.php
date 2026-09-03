@@ -13,9 +13,11 @@ get_header();
 ?>
 <main id="main" class="site-main">
 	<?php while ( have_posts() ) : the_post(); ?>
-		<div class="page-hero">
+		<?php if ( ! function_exists( 'is_wc_endpoint_url' ) || ! is_wc_endpoint_url( 'order-received' ) ) : ?>
+			<div class="page-hero">
 			<h1 class="page-title"><?php the_title(); ?></h1>
 		</div>
+		<?php endif; ?>
 		<article <?php post_class( 'entry-wrap' ); ?>>
 			<div class="entry-content">
 				<?php

@@ -9,8 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$image_id  = iphonebay_opt( 'tradein_image' );
-$image_url = $image_id ? wp_get_attachment_image_url( $image_id, 'large' ) : '';
+$image_ids = array_filter( array(
+	iphonebay_opt( 'tradein_image' ),
+	iphonebay_opt( 'tradein_image2' ),
+	iphonebay_opt( 'tradein_image3' ),
+) );
 $btn_text  = iphonebay_opt( 'tradein_btn_text', 'Get a Quote' );
 $btn_url   = iphonebay_resolve_cta_url( $btn_text, iphonebay_opt( 'tradein_btn_url', '#' ) );
 $steps     = array(
@@ -32,9 +35,25 @@ $steps     = array(
 			</div>
 			<a href="<?php echo esc_url( $btn_url ); ?>" class="btn-primary" style="width:fit-content;"><?php echo esc_html( $btn_text ); ?> &rarr;</a>
 		</div>
-		<div class="tradein-image">
-			<?php if ( $image_url ) : ?>
-				<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php esc_attr_e( 'Trade in your phone', 'iphonebay' ); ?>">
+		<div class="tradein-image" id="tradein-slider">
+			<?php if ( $image_ids ) : ?>
+				<?php foreach ( $image_ids as $index => $image_id ) :
+					$image_url = wp_get_attachment_image_url( $image_id, 'large' );
+					if ( ! $image_url ) {
+						continue;
+					}
+					?>
+					<div class="tradein-slide<?php echo 0 === $index ? ' active' : ''; ?>">
+						<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php esc_attr_e( 'Trade in your phone', 'iphonebay' ); ?>" <?php echo 0 === $index ? '' : 'loading="lazy"'; ?>>
+					</div>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			<?php if ( count( $image_ids ) > 1 ) : ?>
+				<div class="tradein-slider-dots" role="tablist" aria-label="<?php esc_attr_e( 'Trade-in image slides', 'iphonebay' ); ?>">
+					<?php foreach ( $image_ids as $index => $image_id ) : ?>
+						<button class="tradein-slider-dot<?php echo 0 === $index ? ' active' : ''; ?>" role="tab" aria-label="<?php echo esc_attr( sprintf( __( 'Slide %d', 'iphonebay' ), $index + 1 ) ); ?>"></button>
+					<?php endforeach; ?>
+				</div>
 			<?php endif; ?>
 		</div>
 	</div>

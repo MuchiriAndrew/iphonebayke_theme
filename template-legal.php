@@ -19,7 +19,7 @@ get_header();
 				<div class="section-eyebrow"><?php esc_html_e( 'Legal', 'iphonebay' ); ?></div>
 				<h1 class="page-title"><?php the_title(); ?></h1>
 			</div>
-			<p class="page-hero-copy"><?php esc_html_e( 'This page is managed inside WordPress so your team can update policy text without touching theme code.', 'iphonebay' ); ?></p>
+			<p class="page-hero-copy"><?php esc_html_e( 'Straightforward terms, no fine-print surprises — the same honesty we apply to grading a phone.', 'iphonebay' ); ?></p>
 		</div>
 
 		<article <?php post_class( 'entry-wrap legal-layout' ); ?>>

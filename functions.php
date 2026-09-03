@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'IPHONEBAY_VERSION', '1.5.1' );
+define( 'IPHONEBAY_VERSION', '1.6.4' );
 define( 'IPHONEBAY_DIR', get_template_directory() );
 define( 'IPHONEBAY_URI', get_template_directory_uri() );
 
@@ -63,10 +63,18 @@ add_action( 'after_setup_theme', 'iphonebay_content_width', 0 );
  * Enqueue styles and scripts.
  */
 function iphonebay_assets() {
-	// Google Fonts — Outfit.
+	// Google Fonts — Outfit + font-pairing candidates (see inc/customizer.php "Typography").
 	wp_enqueue_style(
 		'iphonebay-fonts',
-		'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap',
+		'https://fonts.googleapis.com/css2'
+			. '?family=Outfit:wght@400;500;600;700;800;900'
+			. '&family=Bricolage+Grotesque:opsz,wght@12..96,400..800'
+			. '&family=Big+Shoulders:wght@700;800;900'
+			. '&family=Big+Shoulders+Display:wght@600;700;800;900'
+			. '&family=Space+Grotesk:wght@400;500;600;700'
+			. '&family=Inter:wght@400;500;600;700;800'
+			. '&family=Fraunces:opsz,wght@9..144,500..700'
+			. '&display=swap',
 		array(),
 		null
 	);
