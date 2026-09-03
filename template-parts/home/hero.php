@@ -16,27 +16,26 @@ $slides = get_posts( array(
 	'order'          => 'ASC',
 ) );
 
-$shop_url = iphonebay_shop_url();
+$shop_url    = iphonebay_shop_url();
+$warranty_url = iphonebay_how_we_test_url();
 ?>
 <section class="hero" id="hero" aria-label="<?php esc_attr_e( 'Featured promotions', 'iphonebay' ); ?>">
 	<div class="hero-track">
 		<?php if ( $slides ) : ?>
 			<?php foreach ( $slides as $index => $slide ) :
 				$img      = get_the_post_thumbnail_url( $slide->ID, 'iphonebay_hero' );
-				$eyebrow  = get_post_meta( $slide->ID, 'iphonebay_eyebrow', true );
 				$subtitle = get_post_meta( $slide->ID, 'iphonebay_subtitle', true );
 				$b1_text  = get_post_meta( $slide->ID, 'iphonebay_btn1_text', true );
-				$b1_url   = iphonebay_resolve_cta_url( get_post_meta( $slide->ID, 'iphonebay_btn1_text', true ), get_post_meta( $slide->ID, 'iphonebay_btn1_url', true ) );
+				$b1_url   = iphonebay_resolve_cta_url( $b1_text, get_post_meta( $slide->ID, 'iphonebay_btn1_url', true ) );
 				$b2_text  = get_post_meta( $slide->ID, 'iphonebay_btn2_text', true );
 				$b2_url   = iphonebay_resolve_cta_url( $b2_text, get_post_meta( $slide->ID, 'iphonebay_btn2_url', true ) );
 				?>
 				<div class="hero-slide<?php echo 0 === $index ? ' active' : ''; ?>">
 					<?php if ( $img ) : ?>
-						<img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( get_the_title( $slide ) ); ?>" <?php echo 0 === $index ? '' : 'loading="lazy"'; ?>>
+						<img src="<?php echo esc_url( $img ); ?>" alt="<?php echo esc_attr( get_the_title( $slide ) ); ?>" <?php echo 0 === $index ? 'fetchpriority="high"' : 'loading="lazy"'; ?>>
 					<?php endif; ?>
 					<div class="hero-overlay"></div>
 					<div class="hero-content"><div class="hero-inner"><div class="hero-text">
-						<?php if ( $eyebrow ) : ?><div class="hero-label"><span class="hero-dot-live"></span> <?php echo esc_html( $eyebrow ); ?></div><?php endif; ?>
 						<h1 class="hero-title"><?php echo wp_kses_post( iphonebay_highlight( get_the_title( $slide ) ) ); ?></h1>
 						<?php if ( $subtitle ) : ?><p class="hero-sub"><?php echo esc_html( $subtitle ); ?></p><?php endif; ?>
 						<div class="hero-ctas">
@@ -47,16 +46,14 @@ $shop_url = iphonebay_shop_url();
 				</div>
 			<?php endforeach; ?>
 		<?php else : ?>
-			<!-- Fallback slide (no Hero Slides created yet) -->
 			<div class="hero-slide active">
 				<div class="hero-overlay"></div>
 				<div class="hero-content"><div class="hero-inner"><div class="hero-text">
-					<div class="hero-label"><span class="hero-dot-live"></span> <?php esc_html_e( 'Welcome', 'iphonebay' ); ?></div>
-					<h1 class="hero-title"><?php echo wp_kses_post( iphonebay_highlight( __( 'Premium *iPhones* Delivered', 'iphonebay' ) ) ); ?></h1>
-					<p class="hero-sub"><?php esc_html_e( 'Ex-UK & Brand New iPhones. Every model. Every colour. Verified genuine, battery health guaranteed.', 'iphonebay' ); ?></p>
+					<h1 class="hero-title"><?php echo wp_kses_post( iphonebay_highlight( __( 'Checked part by part. *Priced honestly.*', 'iphonebay' ) ) ); ?></h1>
+					<p class="hero-sub"><?php esc_html_e( 'Every iPhone we sell passes a 30-point inspection — battery health, screen, cameras, Face ID, IMEI. Same-day CBD delivery and a 6-month warranty on every device.', 'iphonebay' ); ?></p>
 					<div class="hero-ctas">
-						<a href="<?php echo esc_url( $shop_url ); ?>" class="btn-primary"><?php esc_html_e( 'Shop Now', 'iphonebay' ); ?> &rarr;</a>
-						<a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=hero_slide' ) ); ?>" class="btn-ghost"><?php esc_html_e( 'Add Hero Slides', 'iphonebay' ); ?></a>
+						<a href="<?php echo esc_url( $shop_url ); ?>" class="btn-primary"><?php esc_html_e( 'Shop iPhones', 'iphonebay' ); ?> &rarr;</a>
+						<a href="<?php echo esc_url( $warranty_url ); ?>" class="btn-ghost"><?php esc_html_e( 'Our warranty', 'iphonebay' ); ?></a>
 					</div>
 				</div></div></div>
 			</div>

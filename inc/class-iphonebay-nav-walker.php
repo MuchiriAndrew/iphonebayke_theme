@@ -37,7 +37,8 @@ class IphoneBay_Nav_Walker extends Walker_Nav_Menu {
 			$a_class  = 'dropdown-link';
 		}
 
-		if ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-parent', $classes, true ) ) {
+		$is_anchor_link = ! empty( $item->url ) && false !== strpos( $item->url, '#' );
+		if ( ! $is_anchor_link && ( in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-parent', $classes, true ) ) ) {
 			$a_class .= ' active';
 		}
 

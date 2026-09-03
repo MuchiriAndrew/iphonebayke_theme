@@ -4,34 +4,38 @@
 
 	document.addEventListener('DOMContentLoaded', function () {
 
-		/* ---- HERO SLIDER ---- */
-		var hero = document.getElementById('hero');
-		if (hero) {
-			var slides = hero.querySelectorAll('.hero-slide');
-			var dots   = hero.querySelectorAll('.hero-dot');
-			if (slides.length > 1) {
-				var cur = 0, timer;
-				var go = function (idx) {
-					slides[cur].classList.remove('active');
-					if (dots[cur]) { dots[cur].classList.remove('active'); dots[cur].setAttribute('aria-selected', 'false'); }
-					cur = ((idx % slides.length) + slides.length) % slides.length;
-					slides[cur].classList.add('active');
-					if (dots[cur]) { dots[cur].classList.add('active'); dots[cur].setAttribute('aria-selected', 'true'); }
-					reset();
-				};
-				var reset = function () { clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, 5200); };
-				dots.forEach(function (dot, i) { dot.addEventListener('click', function () { go(i); }); });
-				var sx = 0;
-				hero.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
-				hero.addEventListener('touchend', function (e) {
-					var dx = e.changedTouches[0].clientX - sx;
-					if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); }
-				});
-				hero.addEventListener('mouseenter', function () { clearInterval(timer); });
-				hero.addEventListener('mouseleave', reset);
+		/* ---- SLIDER (hero + trade-in, shared mechanic) ---- */
+		var initSlider = function (root, slideSel, dotSel, interval) {
+			var slides = root.querySelectorAll(slideSel);
+			var dots   = root.querySelectorAll(dotSel);
+			if (slides.length < 2) { return; }
+			var cur = 0, timer;
+			var go = function (idx) {
+				slides[cur].classList.remove('active');
+				if (dots[cur]) { dots[cur].classList.remove('active'); dots[cur].setAttribute('aria-selected', 'false'); }
+				cur = ((idx % slides.length) + slides.length) % slides.length;
+				slides[cur].classList.add('active');
+				if (dots[cur]) { dots[cur].classList.add('active'); dots[cur].setAttribute('aria-selected', 'true'); }
 				reset();
-			}
-		}
+			};
+			var reset = function () { clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, interval); };
+			dots.forEach(function (dot, i) { dot.addEventListener('click', function () { go(i); }); });
+			var sx = 0;
+			root.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+			root.addEventListener('touchend', function (e) {
+				var dx = e.changedTouches[0].clientX - sx;
+				if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); }
+			});
+			root.addEventListener('mouseenter', function () { clearInterval(timer); });
+			root.addEventListener('mouseleave', reset);
+			reset();
+		};
+
+		var hero = document.getElementById('hero');
+		if (hero) { initSlider(hero, '.hero-slide', '.hero-dot', 5200); }
+
+		var tradeinSlider = document.getElementById('tradein-slider');
+		if (tradeinSlider) { initSlider(tradeinSlider, '.tradein-slide', '.tradein-slider-dot', 4200); }
 
 		/* ---- NAV SCROLL ---- */
 		var nav = document.getElementById('nav');

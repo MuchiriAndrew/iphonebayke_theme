@@ -216,10 +216,9 @@ foreach ( $category_images as $slug => $config ) {
 }
 
 $theme_mods = array(
-	'iphonebay_marquee'         => 'Apple | Samsung | Google Pixel | M-Pesa Accepted | Genuine Devices | Nairobi Delivery | 6-Month Warranty | Battery Verified',
-	'iphonebay_tradein_eyebrow' => 'Trade-In Program',
-	'iphonebay_tradein_title'   => "Your Old\nPhone is\n*Worth More*",
-	'iphonebay_tradein_desc'    => "Don't let your old device collect dust. Trade it in and get instant credit towards your next purchase — or cash via M-Pesa. Quick valuation, honest prices.",
+	'iphonebay_tradein_eyebrow' => 'Trade-In',
+	'iphonebay_tradein_title'   => "Your old phone is *worth more*\nthan a drawer",
+	'iphonebay_tradein_desc'    => 'Trade in the phone sitting in your drawer and put the value towards your next one. Example: an iPhone 12 64GB in good condition currently fetches up to KES 27,000 — paid to your M-Pesa the same day we verify it.',
 	'iphonebay_tradein_step1'   => 'Tell us your phone model & condition',
 	'iphonebay_tradein_step2'   => 'Get an instant quote — no obligation',
 	'iphonebay_tradein_step3'   => 'Drop off or courier, get paid via M-Pesa',

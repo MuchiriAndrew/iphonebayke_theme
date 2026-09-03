@@ -12,6 +12,11 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <div class="woocommerce-order">
+	<?php if ( $order && ! $order->has_status( 'failed' ) ) : ?>
+		<div class="thankyou-mark" aria-hidden="true">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+		</div>
+	<?php endif; ?>
 	<?php if ( $order ) : ?>
 		<?php do_action( 'woocommerce_before_thankyou', $order->get_id() ); ?>
 
